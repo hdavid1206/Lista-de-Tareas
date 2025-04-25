@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controladores;
 
 import jakarta.servlet.ServletException;
@@ -14,9 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @WebServlet(name = "TareasServlet", urlPatterns = {"/tareas/*"})
-public class TareasSevlet extends HttpServlet {
+public class TareasServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,12 +29,11 @@ public class TareasSevlet extends HttpServlet {
         
         if (pathInfo == null || "/".equals(pathInfo)) {
             // Listar tareas
-            request.getRequestDispatcher("/WEB-INF/views/listarTareas.jsp").forward(request, response);
+            request.getRequestDispatcher("/listarTareas.jsp").forward(request, response);
         } else if ("/nueva".equals(pathInfo)) {
             // Formulario nueva tarea
-            request.getRequestDispatcher("/WEB-INF/views/nuevaTarea.jsp").forward(request, response);
+            request.getRequestDispatcher("/nuevaTarea.jsp").forward(request, response);
         } else if (pathInfo.startsWith("/completar/")) {
-            // Completar tarea
             try {
                 int id = Integer.parseInt(pathInfo.substring("/completar/".length()));
                 for (Tarea tarea : listaTareas) {
@@ -86,4 +80,3 @@ public class TareasSevlet extends HttpServlet {
         }
     }
 }
-

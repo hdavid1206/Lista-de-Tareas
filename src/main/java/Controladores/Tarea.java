@@ -1,21 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controladores;
 
-/**
- *
- * @author Personal
- */
 public class Tarea {
-
-    public Tarea(int nuevoId, String descripcion1) {
-    }
-
     private int id;
     private String descripcion;
     private boolean completada = false;
+    
+    public Tarea(int nuevoId, String descripcion1) {
+        this.id = nuevoId;
+        this.descripcion = descripcion1;
+        this.completada = false;
+    }
     
     public int getId() {
         return id;
@@ -40,5 +34,4 @@ public class Tarea {
     public void setCompletada(boolean completada) {
         this.completada = completada;
     }
-    
 }

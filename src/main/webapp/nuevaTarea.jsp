@@ -1,45 +1,21 @@
-<%-- 
-    Document   : newTarea
-    Created on : 25/04/2025, 9:22:24 a. m.
-    Author     : Personal
---%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="Tarea" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Lista de Tareas</title>
-    <style>
-        .completada {
-            text-decoration: line-through;
-            color: gray;
-        }
-    </style>
+    <title>Nueva Tarea</title>
 </head>
 <body>
-    <h1>Lista de Tareas</h1>
+    <h1>Nueva Tarea</h1>
     
-    <a href="${pageContext.request.contextPath}/tareas/nueva">Nueva Tarea</a>
+    <form action="${pageContext.request.contextPath}/tareas/guardar" method="post">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required>
+        <br><br>
+        <input type="submit" value="Guardar">
+    </form>
     
-    <% List<Tarea> tareas = (List<Tarea>) session.getAttribute("tareas"); %>
-    
-    <% if (tareas != null && !tareas.isEmpty()) { %>
-        <ul>
-        <% for (Tarea tarea : tareas) { %>
-            <li class="<%= tarea.isCompletada() ? "completada" : "" %>">
-                <%= tarea.getDescripcion() %>
-                <% if (!tarea.isCompletada()) { %>
-                    <a href="${pageContext.request.contextPath}/tareas/completar/<%= tarea.getId() %>">[Completar]</a>
-                <% } %>
-            </li>
-        <% } %>
-        </ul>
-    <% } else { %>
-        <p>No hay tareas pendientes.</p>
-    <% } %>
+    <br>
+    <a href="${pageContext.request.contextPath}/tareas">Volver a la lista</a>
 </body>
-</html>
-
 </html>
